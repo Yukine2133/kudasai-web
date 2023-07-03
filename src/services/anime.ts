@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootData } from "../interface/interface";
+import { Data, RootData } from "../interface/interface";
 
 export const animeApi = createApi({
   reducerPath: "animeApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.jikan.moe/v4/top/" }),
   endpoints: (builder) => ({
-    getAnime: builder.query<RootData[], { filter: string; page: number }>({
+    getAnime: builder.query<Data[], { filter: string; page: number }>({
       query: ({ filter, page }) => ({
         url: `anime`,
         params: {
@@ -13,6 +13,7 @@ export const animeApi = createApi({
           page: page.toString(),
         },
       }),
+      transformResponse: (response: RootData<Data>) => response.data,
     }),
   }),
 });
