@@ -1,6 +1,6 @@
-export interface RootData {
+export interface RootData<T> {
   pagination: Pagination;
-  data: Data[];
+  data: T[];
 }
 
 export interface Pagination {
