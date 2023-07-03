@@ -1,9 +1,12 @@
 import { ChevronDown, MenuIcon, SearchIcon } from "../hooks/Icons";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="py-8 flex px-14 lg:px-0 justify-center mx-auto items-center ">
-      <h1 className="text-2xl text-pink mr-8">Kudasai</h1>
+      <Link to='/'>
+        <h1 className="text-2xl text-pink mr-8">Kudasai</h1>
+      </Link>
 
       <nav>
         <ul className="hidden xl:flex gap-10">
