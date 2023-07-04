@@ -5,7 +5,7 @@ import AnimeReveal from "../utils/AnimeReveal";
 
 const PopularPage = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useGetAnimeQuery({
+  const { data } = useGetAnimeQuery({
     page: page,
     filter: "bypopularity",
     limit: 20,

@@ -5,7 +5,7 @@ import AnimeReveal from "../utils/AnimeReveal";
 
 const OngoingPage = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useGetAnimeQuery({
+  const { data } = useGetAnimeQuery({
     page: page,
     filter: "airing",
     limit: 20,
