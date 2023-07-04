@@ -16,23 +16,7 @@ export interface Items {
   per_page: number;
 }
 
-export interface AnimeData {
-  images: {
-    jpg: {
-      large_image_url: string;
-    };
-  };
-  title_english: string;
-  year: string;
-  genres: { name: string }[];
-  synopsis: string;
-  trailer: {
-    embed_url: string;
-  };
-}
-
 export interface Data {
-  AnimeData: AnimeData;
   mal_id: number;
   url: string;
   images: Images;
