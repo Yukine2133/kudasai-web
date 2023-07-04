@@ -2,21 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetAnimeByIdQuery } from "../services/anime";
 import DetailsReveal from "../utils/DetailsReveal";
 import { motion as m } from "framer-motion";
-
-interface AnimeData {
-  images: {
-    jpg: {
-      large_image_url: string;
-    };
-  };
-  title_english: string;
-  year: string;
-  genres: { name: string }[];
-  synopsis: string;
-  trailer: {
-    embed_url: string;
-  };
-}
+import { AnimeData } from "../interface/interface";
 
 const AnimeDetails = () => {
   const { id } = useParams();
@@ -53,16 +39,13 @@ const AnimeDetails = () => {
         />
         <figure className="mt-4">
           <DetailsReveal>
-            <h1 className="font-semibold text-xl">{anime?.title_english}</h1> //
-            Access the title_english property on the anime object
+            <h1 className="font-semibold text-xl">{anime?.title_english}</h1>
             <div className="mt-1 text-purple text-base flex gap-2">
               <h5>{anime?.year} &#183;</h5>
               <h5>Japan &#183;</h5>
-              <h5>{anime?.genres.map((genre) => genre.name).join(", ")}</h5> //
-              Access the genres property on the anime object
+              <h5>{anime?.genres.map((genre) => genre.name).join(", ")}</h5>
             </div>
-            <p className="mt-4 text-[15px]">{anime?.synopsis}</p> // Access the
-            synopsis property on the anime object
+            <p className="mt-4 text-[15px]">{anime?.synopsis}</p>
           </DetailsReveal>
         </figure>
       </section>
