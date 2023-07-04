@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import PopularPage from "./pages/PopularPage";
 import AnimeDetails from "./pages/AnimeDetails";
+import OngoingPage from "./pages/OngoingPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/anime/all/popular" element={<PopularPage />} />
+        <Route path="/anime/all/ongoing" element={<OngoingPage />} />
         <Route path="/anime/:id" element={<AnimeDetails />} />
       </Routes>
     </BrowserRouter>
