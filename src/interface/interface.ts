@@ -16,7 +16,7 @@ export interface Items {
   per_page: number;
 }
 
-interface AnimeData {
+export interface AnimeData {
   images: {
     jpg: {
       large_image_url: string;
