@@ -3,24 +3,11 @@ import { useGetAnimeByIdQuery } from "../services/anime";
 import DetailsReveal from "../utils/DetailsReveal";
 import { motion as m } from "framer-motion";
 
-interface AnimeData {
-  images: {
-    jpg: {
-      large_image_url: string;
-    };
-  };
-  title_english: string;
-  year: string;
-  genres: { name: string }[];
-  synopsis: string;
-  trailer: {
-    embed_url: string;
-  };
-}
-
 const AnimeDetails = () => {
   const { id } = useParams();
-  const { data, isError } = useGetAnimeByIdQuery<AnimeData>({ id: Number(id) });
+  const { data, isError } = useGetAnimeByIdQuery({
+    id: Number(id),
+  });
 
   if (isError) {
     return (
