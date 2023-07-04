@@ -5,12 +5,16 @@ export const animeApi = createApi({
   reducerPath: "animeApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.jikan.moe/v4/" }),
   endpoints: (builder) => ({
-    getAnime: builder.query<Data[], { filter: string; page: number }>({
-      query: ({ filter, page }) => ({
+    getAnime: builder.query<
+      Data[],
+      { filter: string; page: number; limit: number }
+    >({
+      query: ({ filter, page, limit }) => ({
         url: `top/anime`,
         params: {
           filter: filter,
           page: page.toString(),
+          limit: limit.toString(),
         },
       }),
       transformResponse: (response: RootData<Data>) => response.data,
