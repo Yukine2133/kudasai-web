@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGetAnimeQuery } from "../services/anime";
 import { Link } from "react-router-dom";
+import AnimeReveal from "../utils/AnimeReveal";
 
 const OngoingPage = () => {
   const [page, setPage] = useState(1);
@@ -31,20 +32,22 @@ const OngoingPage = () => {
           data.map((anime) => (
             <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
               <figure>
-                <img
-                  className="h-[400px] w-[300px] object-cover gap-4 rounded-2xl "
-                  src={anime.images.jpg.large_image_url}
-                />
-                <h5 className="text-sm mt-2 font-medium">
-                  {anime.title_english && anime.title_english.length > 20
-                    ? anime.title_english.substring(0, 20) + "..."
-                    : anime.title_english}
-                </h5>
-                <div className="flex">
-                  <h6 className="text-sm font-light">
-                    {anime.episodes} episodes
-                  </h6>
-                </div>
+                <AnimeReveal>
+                  <img
+                    className="h-[400px] w-[300px] object-cover gap-4 rounded-2xl "
+                    src={anime.images.jpg.large_image_url}
+                  />
+                  <h5 className="text-sm mt-2 font-medium">
+                    {anime.title_english && anime.title_english.length > 20
+                      ? anime.title_english.substring(0, 20) + "..."
+                      : anime.title_english}
+                  </h5>
+                  <div className="flex">
+                    <h6 className="text-sm font-light">
+                      {anime.episodes} episodes
+                    </h6>
+                  </div>
+                </AnimeReveal>
               </figure>
             </Link>
           ))}
