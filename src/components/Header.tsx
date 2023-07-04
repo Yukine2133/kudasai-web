@@ -1,20 +1,39 @@
+import { useState } from "react";
 import { ChevronDown, MenuIcon, SearchIcon } from "../hooks/Icons";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [dropdown, setDropdown] = useState(false);
+  const handleDropdown = () => {
+    setDropdown(!dropdown);
+  };
+
   return (
-    <header className="py-8 flex px-14 lg:px-0 justify-center mx-auto items-center ">
-      <Link to='/'>
+    <header className="py-8 flex px-14 lg:px-0 justify-center mx-auto items-center">
+      <Link to="/">
         <h1 className="text-2xl text-pink mr-8">Kudasai</h1>
       </Link>
 
       <nav>
         <ul className="hidden xl:flex gap-10">
-          <li className="flex items-center gap-1 ">
+          <li className="flex items-center gap-1 relative">
             Categories{" "}
-            <button className="mt-1">
+            <button onClick={handleDropdown} className="mt-1">
               <ChevronDown />
             </button>
+            {dropdown && (
+              <ul
+                className="absolute left-0 top-8   
+               "
+              >
+                <li>
+                  <Link to="/anime/all/popular">Popular</Link>
+                </li>
+                <li>
+                  <Link to="/anime/all/ongoing">Ongoing</Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>Films</li>
           <li>News</li>
