@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 const PopularItem = () => {
   const { data, isLoading, isError } = useGetAnimeQuery({
-    page: 4,
+    page: 2,
     filter: "bypopularity",
+    limit: 4,
   });
   if (isLoading) {
     return <p className="text-center text-xl ">Loading...</p>;
@@ -34,28 +35,26 @@ const PopularItem = () => {
       </section>
       <section className="flex justify-center items-center gap-4 flex-wrap">
         {data &&
-          data
-            .map((anime) => (
-              <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-                <figure>
-                  <img
-                    className="h-[400px] w-[300px] object-cover gap-4 rounded-2xl "
-                    src={anime.images.jpg.large_image_url}
-                  />
-                  <h5 className="text-sm mt-2 font-medium">
-                    {anime.title_english && anime.title_english.length > 20
-                      ? anime.title_english.substring(0, 20) + "..."
-                      : anime.title_english}
-                  </h5>
-                  <div className="flex">
-                    <h6 className="text-sm font-light">
-                      {anime.episodes} episodes
-                    </h6>
-                  </div>
-                </figure>
-              </Link>
-            ))
-            .slice(0, 4)}
+          data.map((anime) => (
+            <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+              <figure>
+                <img
+                  className="h-[400px] w-[300px] object-cover gap-4 rounded-2xl "
+                  src={anime.images.jpg.large_image_url}
+                />
+                <h5 className="text-sm mt-2 font-medium">
+                  {anime.title_english && anime.title_english.length > 20
+                    ? anime.title_english.substring(0, 20) + "..."
+                    : anime.title_english}
+                </h5>
+                <div className="flex">
+                  <h6 className="text-sm font-light">
+                    {anime.episodes} episodes
+                  </h6>
+                </div>
+              </figure>
+            </Link>
+          ))}
       </section>
     </article>
   );
